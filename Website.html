@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href= CSS/style.css rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <title>Multiplication Game</title>    
+    <link rel="icon" type="image/png" href="Favicon.svg">     
+    <style>
+        #searchBar {
+            display: block;
+            margin-top: 20px;
+            width: 300px;
+            height: 40px;
+            font-size: 25px;
+            padding: 5px;
+        }
+
+       
+    </style>
+</head>
+
+    <br>
+    <h2>Multiply the Numbers:</h2>    
+    <p id="num1"></p>
+    <p id="num2"></p>
+    <input type="number" id="searchBar" placeholder="Answer">
+    <p id="result"></p>
+   
+
+
+    <script>
+
+
+
+        function generateQuestion() {
+            // Generate two random numbers
+            num1 = Math.floor(Math.random() * 10) + 1;
+            num2 = Math.floor(Math.random() * 10) + 1;
+
+            // Display the numbers
+            document.getElementById("num1").innerText = `${num1} x  ${num2}`;            
+            document.getElementById("result").innerText = "";
+            document.getElementById("searchBar").value = "";
+        }
+
+        function checkAnswer() {
+            let userInput = document.getElementById("searchBar").value;
+            let correctAnswer = num1 * num2;
+
+            if (parseInt(userInput) === correctAnswer) {
+                document.getElementById("result").innerText = "Correct!";
+            } else {
+                document.getElementById("result").innerText = "Try again!";
+            }
+
+            // Wait 1 seconds before generating a new question
+            setTimeout(generateQuestion, 1000);
+        }
+
+        // Generate the first question
+        generateQuestion();
+
+        // Add event listener for Enter key press
+        document.getElementById("searchBar").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                checkAnswer();
+            }
+        });
+    </script>
+</body>
+</html>
