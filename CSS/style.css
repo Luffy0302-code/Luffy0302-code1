@@ -32,6 +32,8 @@
 
 p {
     font-family: sans-serif;
+    text-align: center;
+    position: relative;
 }
 
 h2 {
